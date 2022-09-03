@@ -1,16 +1,25 @@
 import { FC } from "react";
-import { StyledCell, StyledCellHeader, StyledCellBody } from "./styled";
+import { Grid, Typography } from "@mui/material";
+import moment from "moment";
 
 interface iCellProps {
-  data: Date;
-  events: any[];
+  data: moment.Moment;
+  events?: any[];
 }
 
 export const Cell: FC<iCellProps> = ({ data, events }) => {
+  const day = moment(data).format("D");
+  const date = moment(data).format("DD");
+
   return (
-    <StyledCell>
-      <StyledCellHeader></StyledCellHeader>
-      <StyledCellBody></StyledCellBody>
-    </StyledCell>
+    <Grid container>
+      <Grid alignContent="center" xs={12}>
+        <Typography textAlign="center" fontSize={12} fontWeight={600}>
+          {date}
+        </Typography>
+        {/*<Typography textAlign="center">{day}</Typography>*/}
+      </Grid>
+      <Grid></Grid>
+    </Grid>
   );
 };
