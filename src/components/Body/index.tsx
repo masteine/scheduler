@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Cell } from "ui/Cell";
+import { Cell } from "components/Cell";
 import moment from "moment";
 import { Grid } from "@mui/material";
 
