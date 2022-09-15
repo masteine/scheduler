@@ -8,7 +8,13 @@ interface iHeaderProps {}
 
 export const Header: FC<iHeaderProps> = () => {
   return (
-    <Grid container direction="row" alignItems="center" spacing={3}>
+    <Grid
+      container
+      direction="row"
+      alignItems="center"
+      spacing={3}
+      height="min-content"
+    >
       <Grid item>
         <Navigation />
       </Grid>

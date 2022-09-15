@@ -6,32 +6,21 @@ import { Grid } from "@mui/material";
 interface iBodyProps {}
 
 export const Body: FC<iBodyProps> = () => {
-  const days = getDaysOfMonth(2022, 1);
+  const days = [...Array(35).keys()].map((day) => ({
+    date: moment().date(day + 1)
+  }));
 
   return (
     <Grid
       display="grid"
       xs={12}
       gridTemplateColumns="repeat(7, 1fr)"
-      gridTemplateRows="repeat(5, 1fr)"
+      gridTemplateRows="repeat(5, auto)"
+      height="100%"
     >
-      {days.map((day, index) => (
-        <Cell key={index} data={day} />
+      {days.map(({ date }, index) => (
+        <Cell key={index} data={date} />
       ))}
     </Grid>
   );
-};
-
-const getDaysOfMonth = (year: number, month: number) => {
-  let monthDate = moment(year + "-" + month, "YYYY-MM");
-  let daysInMonth = monthDate.daysInMonth();
-  let arrDays = [];
-
-  while (daysInMonth) {
-    let current = moment().date(daysInMonth);
-    arrDays.push(current);
-    daysInMonth--;
-  }
-
-  return arrDays.reverse();
 };
