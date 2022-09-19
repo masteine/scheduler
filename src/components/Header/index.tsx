@@ -1,28 +1,30 @@
 import { FC } from "react";
 import { Navigation } from "./Navigation";
 import { Grid, Typography } from "@mui/material";
-
-import moment from "moment/moment";
 import { Dropdown } from "./Dropdown";
+import { useAppState } from "state";
+import { dateFormatByView } from "utils/dateFormatByView";
 
 interface iHeaderProps {}
 
 export const Header: FC<iHeaderProps> = () => {
+  const { currentDate, view } = useAppState((state) => state);
+
   return (
     <Grid
       container
       direction="row"
       alignItems="center"
-      justifyContent="space-between"
-      spacing={3}
       height="min-content"
+      padding={1}
     >
-      <Grid item alignItems="center">
+      <Grid container alignItems="center" xs={10}>
         <Navigation />
-        <Typography fontWeight="700">{moment().format("MMMM YYYY")}</Typography>
+        <Typography fontWeight="700" marginLeft={1}>
+          {dateFormatByView({ date: currentDate, view })}
+        </Typography>
       </Grid>
-
-      <Grid item justifySelf="self-end">
+      <Grid container xs={2} justifyContent="flex-end">
         <Dropdown />
       </Grid>
     </Grid>

@@ -5,7 +5,7 @@ import { Grid } from "@mui/material";
 
 function App() {
   return (
-    <Grid xs={12} height="100%">
+    <Grid container height="100%">
       <Header />
       <Body />
     </Grid>

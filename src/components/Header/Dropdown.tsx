@@ -50,6 +50,14 @@ export const Dropdown = () => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right"
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right"
+        }}
       >
         <MenuItem id="day" onClick={onSelectView} disableRipple>
           Day

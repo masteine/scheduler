@@ -3,17 +3,28 @@ import {
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
   KeyboardArrowRight as KeyboardArrowRightIcon
 } from "@mui/icons-material";
-import { Grid, IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import { useAppState } from "state";
 
 interface iNavigationProps {}
 
 export const Navigation: FC<iNavigationProps> = () => {
+  const { nextDate, prevDate, setTodayDate } = useAppState((state) => state);
+
   return (
     <>
-      <IconButton aria-label="previous">
+      <IconButton color="primary" aria-label="previous" onClick={prevDate}>
         <KeyboardArrowLeftIcon />
       </IconButton>
-      <IconButton aria-label="next">
+      <Button
+        size="small"
+        variant="outlined"
+        color="primary"
+        onClick={setTodayDate}
+      >
+        Today
+      </Button>
+      <IconButton color="primary" aria-label="next" onClick={nextDate}>
         <KeyboardArrowRightIcon />
       </IconButton>
     </>
